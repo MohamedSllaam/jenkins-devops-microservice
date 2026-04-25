@@ -17,10 +17,17 @@ pipeline {
 	// 		args '-v /root/.npm:/root/.npm'
 	// 		}
 	// }
+	environment {
+		dockerHome='MyDocker'
+		mavenHome='MyMaven'
+		PATH="$dockerHome/bin:$mavenHome/bin:$PATH"
+	 
+	}
 	stages {
 		stage('Build') {
 			steps {
-				// sh 'node --version'
+				 sh 'mvn --version'
+				 sh 'docker version'
 				echo "Build"
 				echo "$PATH"
 				echo "BUILD_NUMBER: ${env.BUILD_NUMBER}"
