@@ -4,24 +4,35 @@
 // 		echo "Integration Test"
 // }
 pipeline {
-	// agent any
+ agent any
 	// agent {
 	// 	docker {
 	// 		image 'maven:3.8.4-openjdk-17'
 	// 	 args '-v /root/.m2:/root/.m2'
 	// 	}
 	// }
-	agent {
-		docker {
-			image 'node:18-alpine'
-			args '-v /root/.npm:/root/.npm'
-			}
-	}
+	// agent {
+	// 	docker {
+	// 		image 'node:18-alpine'
+	// 		args '-v /root/.npm:/root/.npm'
+	// 		}
+	// }
 	stages {
 		stage('Build') {
 			steps {
-				sh 'node --version'
+				// sh 'node --version'
 				echo "Build"
+				echo "$PATH"
+				echo "BUILD_NUMBER: ${env.BUILD_NUMBER}"
+				echo "BUILD_ID: ${env.BUILD_ID}"
+				echo "BUILD_TAG: ${env.BUILD_TAG}"
+				echo "BUILD_URL: ${env.BUILD_URL}"
+				echo "WORKSPACE: ${env.WORKSPACE}"
+				echo "JOB_NAME: ${env.JOB_NAME}"
+				echo "GIT_COMMIT: ${env.GIT_COMMIT}"	
+				echo "GIT_BRANCH: ${env.GIT_BRANCH}"
+				echo "GIT_URL: ${env.GIT_URL}"
+				
 			}
 		}
 		stage('Test') {
