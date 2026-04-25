@@ -5,11 +5,17 @@
 // }
 pipeline {
 	// agent any
+	// agent {
+	// 	docker {
+	// 		image 'maven:3.8.4-openjdk-17'
+	// 	 args '-v /root/.m2:/root/.m2'
+	// 	}
+	// }
 	agent {
 		docker {
-			image 'maven:3.8.4-openjdk-17'
-		 args '-v /root/.m2:/root/.m2'
-		}
+			image 'node:18-alpine'
+			args '-v /root/.npm:/root/.npm'
+			}
 	}
 	stages {
 		stage('Build') {
