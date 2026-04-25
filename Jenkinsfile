@@ -18,8 +18,8 @@ pipeline {
 	// 		}
 	// }
 	environment {
-		dockerHome='MyDocker'
-		mavenHome='MyMaven'
+		dockerHome= tool 'MyDocker'
+		mavenHome= tool 'MyMaven'
 		PATH="$dockerHome/bin:$mavenHome/bin:$PATH"
 	 
 	}
